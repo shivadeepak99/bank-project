@@ -1,0 +1,231 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-color: #FEF9D9;
+            margin: 0;
+        }
+
+        .card{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        .container{
+            background-color: #D2E0FB;
+            box-shadow: 0px 4px 8px 0px;
+            width: 1450px;
+            height: 680px;
+            border-radius: 8px;
+            display: grid;
+            grid-template-columns: 2fr 8fr;
+            grid-template-rows: 0.7fr 8.3fr 1fr;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .dashboard{
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .content{
+            border-radius: 8px;
+        }
+
+        .foot{
+            grid-column: span 2;
+            border-radius: 8px;
+            font-size: xx-large;
+            padding: 10px;
+            font-family: "Noto",sans-serif;
+        }
+
+        .header{
+            grid-column: span 2;
+            border-radius: 8px;
+            font-size: xx-large;
+            font-family: "Noto", sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .c{
+            box-shadow: 0px 2px 4px 0;
+            background-color: #D2E0FB;
+        }
+
+        .dash{
+            width: max-content;
+            border-radius: 8px;
+            padding: 5px;
+            width: 100%;
+            box-shadow: 0px 2px 4px 0;
+            font-family: "Noto",sans-serif;
+            font-weight: bolder;
+            background-color: #FEF9D9;
+            opacity: 0.8;
+        }
+
+        .dash:hover{
+            box-shadow: 0 4px 8px 0;
+            opacity: 1;
+        }
+
+
+        @media (max-width: 1462px) {
+
+            .foot{
+                font-size: x-large;
+            }
+
+        }
+
+        @media (max-width: 1110px) {
+
+            .foot{
+                font-size: large;
+            }
+
+        }
+
+        @media (max-width: 842px) {
+
+            .foot{
+                font-size: medium;
+            }
+
+        }
+
+        @media (max-width: 842px) {
+
+            .foot{
+                font-size: small;
+            }
+
+        }
+
+        .header{
+            display: flex;
+            justify-content:space-between;
+        }
+
+        .profile{
+            margin-right: 20px;
+            background-color: #FEF9D9;
+            padding: 5px;
+            border-radius: 50%;
+            padding-bottom: 0px;
+            box-shadow: 0px 2px 4px 0;
+            opacity: 0.8;
+            position: relative;
+        }
+
+        .profile:hover{
+            box-shadow: 0px 4px 8px 0;
+            opacity: 1;
+        }
+
+        .profile_card{
+            background-color: #FEF9D9;
+            position: absolute;
+            top: 11%;
+            left: 83%;
+            padding: 12px;
+            box-shadow: 0px 2px 4px 0;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 10%;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div class="card">
+
+    <div class="container">
+        <div class="c header"><h2>Welcome  ,<%=  Naam %> </h2><h4>  Customer ID :<%=  cid %></h4>
+        <% if (isNewUser) { %>
+                <script>
+                    alert('Note your Customer ID for future logins: <%= cid %> !!');
+                </script>
+            <% } %>
+            <img src="images\logo-transparent-png.png" width="250px">
+            <button class="profile" style="font-size: xx-large;">
+                <img src="images/dropdown.svg">
+            </button>
+            <div class="profile_card">
+                <form method="get" action="/profile">
+                    <button type="submit" class="dash">Profile</button>
+                </form>
+                <form method="get" action="/logout">
+                    <button type="submit" class="dash">Log Out</button>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="c dashboard">
+            <form method="get" action="/account-details">
+                <button type="submit" class="dash">Account-Details</button>
+            </form>
+            <form method="get" action="/withdraw">
+                <button type="submit" class="dash">Withdraw</button>
+            </form>
+            <form method="get" action="/deposit">
+                <button type="submit" class="dash">Deposit</button>
+            </form>
+            <form method="get" action="/transaction-history">
+                <button type="submit" class="dash">Transaction history</button>
+            </form>
+            <form method="get" action="/apply-loan">
+                <button type="submit" class="dash">Apply for Loan</button>
+            </form>
+            <form method="get" action="/help">
+                <button type="submit" class="dash">Help : </button>
+            </form>
+        </div>
+
+        <div class="c content"></div>
+        <footer class="c foot">
+            Contact Us at : Maharashtra, Nagpur, Barsi-Nagar
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Email-id : NBImaharashtra@gmail.com
+        </footer>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="index.js" charset="UTF-8"></script>
+<script>
+
+
+    $(".profile_card").hide()
+
+    $(".profile").on("click", function () {
+        $(".profile_card").slideToggle("fast")
+    })
+</script>
+</body>
+</html>
